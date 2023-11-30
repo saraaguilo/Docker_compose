@@ -2,17 +2,35 @@ version: '3'
 services:
 
   backend: 
-    image: saraaguilo/proyectoea:0.1.1
+    image: borjafer/proyecto:latest
     restart: always
     ports:
       - "9090:9090"
 
 
   backoffice:
-    image: saraaguilo/backoffice:0.1.2
+    image: saraaguilo/backoffice1:0.0.1
 
     restart: always
     depends_on:
-      - proyectoea
+      - backend
+    ports:
+      - "8181:80"
+
+  frontend:
+    image: saraaguilo/flutter1:0.0.1
+
+    restart: always
+    depends_on:
+      - backend
     ports:
       - "8080:80"
+
+  mongo:
+    image: mongo:latest
+
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "27017:27017"
