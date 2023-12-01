@@ -2,14 +2,14 @@ version: '3'
 services:
 
   backend: 
-    image: borjafer/proyecto:latest
+    image: saraaguilo/proyecto_ea31:latest
     restart: always
     ports:
       - "9090:9090"
 
 
   backoffice:
-    image: saraaguilo/backoffice1:0.0.1
+    image: saraaguilo/backoffice1:latest
 
     restart: always
     depends_on:
@@ -18,7 +18,7 @@ services:
       - "8181:80"
 
   frontend:
-    image: saraaguilo/flutter1:0.0.1
+    image: saraaguilo/flutter1:latest
 
     restart: always
     depends_on:
